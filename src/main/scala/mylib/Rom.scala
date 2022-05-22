@@ -14,15 +14,7 @@ class Rom extends Component {
 
   // val mem = Mem(UInt(32 bits), wordCount = 64)
   val romTable = Array(
-    U"32'h0",
-    U"32'h0",
-    U"32'h1",
-    U"32'h2",
-    U"32'h3",
-    U"32'h4",
-    U"32'h5",
-    U"32'h6",
-    U"32'h7",
+    // index 0
     U"32'h0",
     U"32'h1",
     U"32'h2",
@@ -31,6 +23,7 @@ class Rom extends Component {
     U"32'h5",
     U"32'h6",
     U"32'h7",
+    // index 8
     U"32'h0",
     U"32'h1",
     U"32'h2",
@@ -39,6 +32,7 @@ class Rom extends Component {
     U"32'h5",
     U"32'h6",
     U"32'h7",
+    // index 16
     U"32'h0",
     U"32'h1",
     U"32'h2",
@@ -47,6 +41,7 @@ class Rom extends Component {
     U"32'h5",
     U"32'h6",
     U"32'h7",
+    // index 32
     U"32'h0",
     U"32'h1",
     U"32'h2",
@@ -55,6 +50,7 @@ class Rom extends Component {
     U"32'h5",
     U"32'h6",
     U"32'h7",
+    // index 40
     U"32'h0",
     U"32'h1",
     U"32'h2",
@@ -63,6 +59,7 @@ class Rom extends Component {
     U"32'h5",
     U"32'h6",
     U"32'h7",
+    // index 48
     U"32'h0",
     U"32'h1",
     U"32'h2",
@@ -71,13 +68,24 @@ class Rom extends Component {
     U"32'h5",
     U"32'h6",
     U"32'h7",
+    // index 56
     U"32'h0",
     U"32'h1",
     U"32'h2",
     U"32'h3",
     U"32'h4",
     U"32'h5",
-    U"32'h6"
+    U"32'h6",
+    U"32'h7",
+    // index 64
+    U"32'h0",
+    U"32'h1",
+    U"32'h2",
+    U"32'h3",
+    U"32'h4",
+    U"32'h5",
+    U"32'h6",
+    U"32'h7"
   )
   val mem = Mem(UInt(32 bits), initialContent = romTable)
 

@@ -33,16 +33,17 @@ object MySpinalConfig
 
 //Hardware definition
 class MyTopLevel extends Component {
-  val io = new Bundle {
-    val inst = out UInt(32 bits)
-  }
 
   val subPcReg = new PcReg()
   val subRom = new Rom()
 
+  val io = new Bundle {
+    val inst = out UInt (32 bits)
+  }
+
   subRom.io.addr := subPcReg.io.pc
   subRom.io.ce := subPcReg.io.ce
-  
+
   io.inst := subRom.io.reg
 }
 
