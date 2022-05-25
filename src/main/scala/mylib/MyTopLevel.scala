@@ -21,9 +21,11 @@ package mylib
 import spinal.core._
 import spinal.lib._
 
-import scala.util.Random
-
-//Define a custom SpinalHDL configuration with synchronous reset instead of the default asynchronous one. This configuration can be resued everywhere
+/*
+ * Define a custom SpinalHDL configuration with synchronous reset
+ * instead of the default asynchronous one. This configuration can be
+ * resued everywhere.
+ */
 object MySpinalConfig
     extends SpinalConfig(
       targetDirectory = "./hdl/src",
@@ -34,21 +36,23 @@ object MySpinalConfig
 //Hardware definition
 class MyTopLevel extends Component {
 
+  val io = new Bundle {
+    val state = out Bool()
+  }
+
+  val state = Reg(Bool()) init(False)
+  io.state := state
+
   val subPcReg = new PcReg()
   val subRom = new Rom()
 
-  val io = new Bundle {
-    val inst = out UInt (32 bits)
-  }
-
-  subRom.io.addr := subPcReg.io.pc
   subRom.io.ce := subPcReg.io.ce
+  subRom.io.addr := subPcReg.io.pc
 
-  io.inst := subRom.io.reg
 }
 
 //Generate the MyTopLevel's Verilog using the above custom configuration.
-object MyTopLevelVerilogWithCustomConfig {
+object MyTopLevelVerilog {
   def main(args: Array[String]) {
     MySpinalConfig.generateVerilog(new MyTopLevel)
   }
